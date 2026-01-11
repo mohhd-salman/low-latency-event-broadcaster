@@ -1,0 +1,23 @@
+# docker-compose.yml
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: llb-redis
+    ports:
+      - "6379:6379"
+
+  hub:
+    image: python:3.11-slim
+    container_name: llb-hub
+    working_dir: /app
+    volumes:
+      - ./:/app
+    env_file:
+      - .env.example
+    command: >
+      bash -lc "pip install --no-cache-dir -r requirements.txt &&
+                uvicorn app.hub.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
