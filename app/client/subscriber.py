@@ -17,6 +17,12 @@ async def run(client_id: str, url: str, log_dir: str):
 
         async for msg in ws:
             received_at = now_ms()
+            try:
+                event = json.loads(msg)
+                published_at = event.get("published_at_ms")
+            except Exception:
+                event = {"raw": msg}
+                published_at = None
 
             latency = received_at - published_at if published_at else None
 
