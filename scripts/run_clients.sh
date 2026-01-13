@@ -15,3 +15,6 @@ for i in $(seq 1 "$N"); do
     > "$LOG_DIR/$cid.out" 2>&1 &
   echo $! > ".pids/$cid.pid"
 done
+
+echo "Done. PIDs stored in .pids/"
+echo "Check hub stats: curl http://localhost:8000/stats"
