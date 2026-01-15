@@ -121,38 +121,38 @@ flowchart LR
 
 ### Folder Structure and File Roles
 
-### docker-compose.yml:
-Runs Redis and Hub containers.
+#### docker-compose.yml:
+- Runs Redis and Hub containers.
 
-### app/hub/main.py:
-Creates FastAPI app, starts Redis listener, defines endpoints and WebSocket.
+#### app/hub/main.py:
+- Creates FastAPI app, starts Redis listener, defines endpoints and WebSocket.
 
-### app/hub/redis_subscriber.py:
-Listens to Redis channel and forwards events.
+#### app/hub/redis_subscriber.py:
+- Listens to Redis channel and forwards events.
 
-### app/hub/ws_manager.py:
-Manages WebSocket clients and broadcasts safely.
+#### app/hub/ws_manager.py:
+- Manages WebSocket clients and broadcasts safely.
 
-### app/hub/stats.py:
-Tracks connected clients and events received.
+#### app/hub/stats.py:
+- Tracks connected clients and events received.
 
-### app/publisher/publish.py:
-Generates events and publishes to Redis.
+#### app/publisher/publish.py:
+- Generates events and publishes to Redis.
 
-### app/client/subscriber.py:
-Connects to hub, receives events, measures latency, writes logs.
+#### app/client/subscriber.py:
+- Connects to hub, receives events, measures latency, writes logs.
 
-### scripts/run_clients.sh:
-Starts many subscribers.
+#### scripts/run_clients.sh:
+- Starts many subscribers.
 
-### scripts/stop_clients.sh:
-Stops subscribers.
+#### scripts/stop_clients.sh:
+- Stops subscribers.
 
-### scripts/run_loadtest.sh:
-Runs full benchmark pipeline.
+#### scripts/run_loadtest.sh:
+- Runs full benchmark pipeline.
 
-### app/loadtest/report.py:
-Aggregates logs and prints statistics.
+#### app/loadtest/report.py:
+- Aggregates logs and prints statistics.
 
 
 ## Core features
